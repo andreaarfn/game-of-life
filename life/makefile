@@ -5,12 +5,26 @@ SRC_DIR = src
 BUILD_DIR = build
 INCLUDE_DIR = include
 
-_SRC_FILES = life_test.c life.c
-SRC_FILES = ${addprefix ${SRC_DIR}/, ${_SRC_FILES}}
+#Serial version
+SERIAL_SRC = $(SRC_DIR)/life.c $(SRC_DIR)/life_test.c
+
+# OpenMP version uses both life.c and life_omp.c
+OMP_SRC = $(SRC_DIR)/life.c $(SRC_DIR)/life_omp.c $(SRC_DIR)/life_test.c
+
 
 TARGETS = life_test
 
 all: ${TARGETS}
 
-life_test:
-	${CC} ${CFLAGS} ${SRC_FILES} -o ${BUILD_DIR}/$@ && ./${BUILD_DIR}/$@
+life_serial:
+	$(CC) $(CFLAGS) $(SERIAL_SRC) -o $(BUILD_DIR)/$@
+
+life_omp:
+	$(CC) $(CFLAGS) -fopenmp $(OMP_SRC) -o $(BUILD_DIR)/$@
+
+run_serial: life_serial
+	./$(BUILD_DIR)/life_serial
+
+run_omp: life_omp
+	./$(BUILD_DIR)/life_omp
+
