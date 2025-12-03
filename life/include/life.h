@@ -3,9 +3,9 @@
 #include <stdio.h>
 
 #define RULE_SIZE 3
-#define VIRTUAL_MAX_COLS 71
+#define VIRTUAL_MAX_COLS 1200
 #define MAX_COLS VIRTUAL_MAX_COLS + 2
-#define FILE_MAX_LINES 27
+#define FILE_MAX_LINES 1200
 
 // More about game of life: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
