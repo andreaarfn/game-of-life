@@ -21,3 +21,9 @@ void update_world_omp(
     int world_aux[][MAX_COLS],
     const int rule[RULE_SIZE]
 );
+
+void update_world_n_generations_omp(
+    int n, int world[][MAX_COLS],
+    int rows_count, int cols_count,
+    int world_aux[][MAX_COLS],
+    const int rule[RULE_SIZE]);
