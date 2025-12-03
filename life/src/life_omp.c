@@ -32,9 +32,11 @@ void update_world_omp(
             submatrix[0][0] = world[pre_row][pre_col];
             submatrix[0][1] = world[pre_row][col];
             submatrix[0][2] = world[pre_row][pos_col];
+
             submatrix[1][0] = world[row][pre_col];
             submatrix[1][1] = world[row][col];
             submatrix[1][2] = world[row][pos_col];
+
             submatrix[2][0] = world[pos_row][pre_col];
             submatrix[2][1] = world[pos_row][col];
             submatrix[2][2] = world[pos_row][pos_col];
@@ -43,6 +45,22 @@ void update_world_omp(
         }
     }
 
-    // we can also parallelize this.
+    // Copy results back — can parallelize but not necessary
     copy_world(world, rows_count, cols_count, world_aux);
+}
+
+
+void update_world_n_generations_omp(
+    int n, int world[][MAX_COLS],
+    int rows_count, int cols_count,
+    int world_aux[][MAX_COLS],
+    const int rule[RULE_SIZE])
+{
+    if (n <= 0)
+        return;
+
+    for (int i = 0; i < n; i++)
+    {
+        update_world_omp(world, rows_count, cols_count, world_aux, rule);
+    }
 }

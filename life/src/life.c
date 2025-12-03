@@ -109,6 +109,7 @@ void update_world_n_generations(
 	int world_aux[][MAX_COLS],
 	const int rule[RULE_SIZE])
 {
+
 	if (n <= 0)
 		return;
 
@@ -116,6 +117,8 @@ void update_world_n_generations(
 	{
 		update_world(world, rows_count, cols_count, world_aux, rule);
 	}
+
+
 }
 
 void fprint_world(const int world[][MAX_COLS], int rows_count, int cols_count, FILE *__restrict__ __stream)
