@@ -22,9 +22,19 @@ The project contains two modules:
 ## Building & Running
 
 ```
-  make                #Runs both serial and parallel version
+  make run            #Runs both serial and parallel version
   make run_serial     #Run just the serial (original) version
   make run_omp        #Run just the OpenMP version
+```
+
+---
+
+## Testing Speedups
+
+```
+  make speed_test     #Compiles speed test
+  OMP_NUM_THREADS=8   #Change to fit the num threads you choose!
+  make run_speed      #Run the speed test with your set num threads
 ```
 
 ---
