@@ -33,7 +33,7 @@ The project contains two modules:
 
 ```
   make speed_test     #Compiles speed test
-  OMP_NUM_THREADS=8   #Change to fit the num threads you choose!
+  export OMP_NUM_THREADS=8   #Change to fit the num threads you choose!
   make run_speed      #Run the speed test with your set num threads
 ```
 
